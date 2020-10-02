@@ -1,0 +1,17 @@
+INSERT INTO roles(name) VALUES('Task_creator');
+INSERT INTO roles(name) VALUES('Validation_Officer');
+INSERT INTO roles(name) VALUES('Risk_Officer');
+INSERT INTO roles(name) VALUES('Final_Approve');
+
+{
+"username" : "xyz",
+"email": "zyz@gmail.com",
+"password" : "123456",
+"roles" : "Task_creator"
+}
+
+
+{
+"username" : "xyz",
+"password" : "123456",
+}
