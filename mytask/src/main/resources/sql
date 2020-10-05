@@ -15,3 +15,14 @@ INSERT INTO roles(name) VALUES('Final_Approve');
 "username" : "xyz",
 "password" : "123456",
 }
+
+http://localhost:7070/api/v1/task/getAllTask
+
+
+http://localhost:7070/api/v1/task/addTask
+{
+"taskDescription": "I confirmed URL",
+"isApprove":"",
+"isRejected":"",
+"roles":"Task_creator"
+}

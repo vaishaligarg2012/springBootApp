@@ -27,9 +27,12 @@ import com.mytask.app.model.LoginRequest;
 import com.mytask.app.model.MessageResponse;
 import com.mytask.app.model.Role;
 import com.mytask.app.model.SignupRequest;
+import com.mytask.app.model.Task;
 import com.mytask.app.model.User;
 import com.mytask.app.repository.RoleRepository;
+import com.mytask.app.repository.TaskRepository;
 import com.mytask.app.repository.UserRepository;
+import com.mytask.app.service.TaskService;
 import com.mytask.app.service.UserDetailsImpl;
 
 
@@ -52,11 +55,14 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
+	@Autowired
+	TaskRepository taskRepo;
 
+	@Autowired 
+	TaskService taskService;
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
-
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -68,11 +74,14 @@ public class AuthController {
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
+		List<Task> listOfTask= taskService.getAllTasks().stream().filter(task->task.getRoles().equals(roles.get(0))).collect(Collectors.toList()); 
 		return ResponseEntity.ok(new JwtResponse(jwt, 
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
 												 userDetails.getEmail(), 
-												 roles));
+												 listOfTask));
+		
+		
 	}
 
 	@PostMapping("/signup")

@@ -1,7 +1,7 @@
 package com.mytask.app.model;
 
 import java.util.List;
-
+import com.mytask.app.model.Task;
 public class JwtResponse {
 
 	
@@ -10,10 +10,10 @@ public class JwtResponse {
 	private long id;
 	private String username;
 	private String email;
-	private List<String> roles;
+	private List<Task> roles;
 
 	
-	public JwtResponse(String jwt, Long id2, String username2, String email2, List<String> roles2) {
+	public JwtResponse(String jwt, Long id2, String username2, String email2, List<Task> roles2) {
 		// TODO Auto-generated constructor stub
 		this.token = jwt;
 		this.id = id2;
@@ -73,12 +73,12 @@ public class JwtResponse {
 	}
 
 
-	public  List<String> getRoles() {
+	public  List<Task> getRoles() {
 		return roles;
 	}
 
 
-	public void setRoles( List<String> roles) {
+	public void setRoles( List<Task> roles) {
 		this.roles = roles;
 	}
 

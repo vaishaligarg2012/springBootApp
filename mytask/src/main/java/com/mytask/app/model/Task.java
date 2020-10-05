@@ -12,6 +12,7 @@ public class Task {
 	private String taskDescription;
 	private boolean isApprove;
 	private boolean isRejected;
+	private String roles;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,8 @@ public class Task {
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
 	}
+	
+	
 
 	public boolean isApprove() {
 		return isApprove;
@@ -45,6 +48,14 @@ public class Task {
 
 	public void setRejected(boolean isRejected) {
 		this.isRejected = isRejected;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	
 	
